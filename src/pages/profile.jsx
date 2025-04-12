@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import profilePic from "../image/blank-profile-picture-973460.svg";
+import "../css/profile.css"
 
 function Profile() {
 
@@ -26,11 +28,16 @@ function Profile() {
     }
 
     return (
-        <div className="home">
-            <div className="profile-name">
-                <div>username : {username}</div>
-                <div>phone number : {userphone}</div>
-                <div>email : {usermail}</div>
+        <div className="profile-page">
+            <div className="profile-container">
+                <div className="image">
+                    <img src={profilePic} alt="your profile pic" />
+                </div>
+                <div className="profile-info">
+                    <div className="name">Username: {username}</div>
+                    <div className="phone-number">Phone number: {userphone}</div>
+                    <div className="mail">Email: {usermail}</div>
+                </div>
             </div>
             <button onClick={handleSignOut}>Sign Out</button>
         </div>
