@@ -28,7 +28,9 @@ function Profile() {
     return (
         <div className="home">
             <div className="profile-name">
-                welcome,{username},{userphone},{usermail} !
+                <div>username : {username}</div>
+                <div>phone number : {userphone}</div>
+                <div>email : {usermail}</div>
             </div>
             <button onClick={handleSignOut}>Sign Out</button>
         </div>
