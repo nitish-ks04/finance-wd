@@ -5,6 +5,16 @@ import "../css/profile.css"
 
 function Profile() {
 
+    useEffect(() => {
+      const isuser=localStorage.getItem("userInside")
+      if(!isuser){
+        alert("login or register first to access");
+        navigate("/");
+      }
+    }, [])
+    
+
+
     const [username, setusername] = useState("");
     const [userphone, setuserphone] = useState("");
     const [usermail, setusermail] = useState("");

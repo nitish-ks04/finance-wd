@@ -8,6 +8,7 @@ function About_us() {
     useEffect(() => {
         const isUser = localStorage.getItem("userInside");
         if (!isUser) {
+            alert("login or register first to access");
             navigate('/');
         }
     }, [])
