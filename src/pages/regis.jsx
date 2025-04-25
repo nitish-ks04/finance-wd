@@ -11,7 +11,7 @@ function Regis() {
     useEffect(() => {
         const isuser = localStorage.getItem("userInside");
         if (isuser) {
-            navigate("/profile")
+            navigate("/home")
         }
     }, [])
 
@@ -33,20 +33,23 @@ function Regis() {
         localStorage.setItem("users", JSON.stringify(users))
         localStorage.setItem("userInside", true)
         localStorage.setItem("currentuser", JSON.stringify(newuser));
-        navigate("/profile")
+        navigate("/home")
     }
 
     return (
-        <div className="home">
-            <form onSubmit={handleSubmit(handelReg)} className="submit-form">
-                <h2>Register </h2>
-                <input type="text" placeholder="Enter your name" className="name-input" {...register("text")} />
-                <input type="tel" placeholder="Enter your phone number" className="phone-input" {...register("ph")} />
-                <input type="email" placeholder="Enter your email" className="email-input" {...register("mail")} />
-                <input type="password" placeholder="Enter your password" className={`password-input ${errors.pass ? "input-error" : ""}`}{...register("pass", { required: true })} />
-                {errors.pass && (<span className="error-message">This field is required</span>)}
-                <button type="submit">Submit</button>
-            </form>
+        <div className="home-container">
+            <div className="regis-image"> </div>
+            <div className="home">
+                <form onSubmit={handleSubmit(handelReg)} className="submit-form">
+                    <h2>Register </h2>
+                    <input type="text" placeholder="Enter your name" className="name-input" {...register("text")} />
+                    <input type="tel" placeholder="Enter your phone number" className="phone-input" {...register("ph")} />
+                    <input type="email" placeholder="Enter your email" className="email-input" {...register("mail")} />
+                    <input type="password" placeholder="Enter your password" className={`password-input ${errors.pass ? "input-error" : ""}`}{...register("pass", { required: true })} />
+                    {errors.pass && (<span className="error-message">This field is required</span>)}
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
         </div>
     );
 }

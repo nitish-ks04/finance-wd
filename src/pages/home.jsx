@@ -1,16 +1,59 @@
-
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/home.css"
+import Firstillus from "../image/first-illus.png"
+import secondillus from "../image/second-illus.png"
+import Feature from "../component/featureobj";
 function Home() {
+    const [currentIndex, setCurrentIndex] = useState(0);
     const navigate = useNavigate();
+    const [feature] = useState(["keep record of the expenses", "easy to search your expenses", "Lorem ipsum, dolor sit amet consectetur adipisicing elit.", "Animi, reprehenderit.lorem5"])
+
+    const handleNext = () => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % feature.length);
+    };
+    const handlePrev = () => {
+        setCurrentIndex((prevIndex) => (prevIndex - 1 + feature.length) % feature.length);
+    };
     return (
         <div className="hom">
-            <div className="hom-text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo officia nostrum incidunt dolor consectetur ratione quia aperiam tempora et tenetur ipsa facere, tempore cum adipisci blanditiis. Facere dolorum officiis sunt explicabo quidem nesciunt laboriosam recusandae, minima quos fugit ad amet sint suscipit temporibus nobis incidunt sed numquam, non omnis et quaerat aspernatur ducimus! Minima repellendus impedit fugiat magni eum ea blanditiis consequatur asperiores esse adipisci id aspernatur necessitatibus fugit aliquam voluptates delectus, tenetur eligendi incidunt est! Pariatur commodi eos temporibus voluptate, quo placeat maxime deleniti est dolore eveniet iste provident officiis praesentium vitae rem nihil similique, odio molestiae mollitia ipsum quas quasi magnam hic expedita! Repudiandae suscipit, dicta distinctio dolorem eos sapiente adipisci. Facere quo hic cum totam eligendi quisquam quidem obcaecati corrupti, quod ullam animi, cumque natus minima necessitatibus? Blanditiis, officiis ratione modi natus autem aliquid corrupti quaerat minus voluptatibus magnam veritatis, voluptatum quisquam eaque rerum accusamus. Iste aliquam blanditiis ipsa sint rerum accusamus ex iure recusandae, facere cum magnam delectus architecto unde atque. Nobis nulla provident explicabo facere veritatis nam enim minus voluptate nesciunt, perspiciatis aliquam totam hic repudiandae, commodi sed molestias. Quae magni id similique quidem esse porro assumenda consequatur quod! Vero ipsum nam commodi quas quis? Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae fugiat quas illum ea esse commodi in neque, aperiam consequatur atque incidunt error accusamus ducimus magni sunt! Repellendus voluptates commodi quo pariatur at.
+            <div className="first-lay">
+                <div className="hom-text">
+                    <h2>We Help Your To,</h2>
+                    Keep record of your daily expenses
+                </div>
+                <div className="first-illu">
+                    <img src={Firstillus} alt="first illustration" />
+                </div>
+            </div>
+            <div className="second-lay">
+                <div className="second-text">
+                    <h2>Start making data-driven financial decisions today.</h2>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat pariatur accusamus atque minus suscipit fugit nihil omnis adipisci nobis deleniti dicta aliquid, possimus error officiis.
+                </div>
+                <div className="second-illu">
+                    <img src={secondillus} alt="second illustration" />
+                </div>
+            </div>
+            <div className="third-lay">
+                <h2>Feature</h2>
+                <div className="third-text">
+                    <button className="arrow-btn" onClick={handlePrev}>←</button>
+                    {feature.map((fea, index) => (
+                        <div
+                            key={index}
+                            className={`feat ${index === currentIndex ? "active" : ""}`}
+                        >
+                            {fea}
+                        </div>
+                    ))}
+                    <button className="arrow-btn" onClick={handleNext}>→</button>
+                </div>
             </div>
             <div className="home-register">
-                <button onClick={() => navigate("/regis")}>Register</button>
-                <button onClick={() => navigate("/login")}>Login </button>
+                <button onClick={() => navigate("/home")}>Home</button>
+                <button onClick={() => navigate("/abo_us")}>Route </button>
+                <button onClick={() => navigate("/profile")}>Profile </button>
             </div>
         </div>
 

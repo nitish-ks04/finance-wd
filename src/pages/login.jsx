@@ -9,7 +9,7 @@ function Login() {
     useEffect(() => {
         const isuser = localStorage.getItem("userInside")
         if (isuser) {
-            navigate("/profile")
+            navigate("/home")
         }
     }, [])
 
@@ -25,22 +25,25 @@ function Login() {
         if (existinguser.password !== data.pass) {
             alert("Incorrect password!");
             return;
-          }
+        }
 
         localStorage.setItem("userInside", true);
         localStorage.setItem("currentuser", JSON.stringify(existinguser));
-        navigate("/profile");
+        navigate("/home");
     };
 
     return (
-        <div className="home">
-            <form onSubmit={handleSubmit(handereg)} className="submit-form">
-                <h2>Login Here</h2>
-                <input type="text" placeholder="Enter your name" className="name-input" {...register("text")} />
-                <input type="password" placeholder="Enter your password" className={`password-input ${errors.pass ? "input-error" : ""}`}{...register("pass", { required: true })} />
-                {errors.pass && (<span className="error-message">This field is required</span>)}
-                <button type="submit">Submit</button>
-            </form>
+        <div className="login-container">
+            <div className="login-image"> </div>
+            <div className="login-home">
+                <form onSubmit={handleSubmit(handereg)} className="login-submit-form">
+                    <h2>Login Here</h2>
+                    <input type="text" placeholder="Enter your name" className="login-name-input" {...register("text")} />
+                    <input type="password" placeholder="Enter your password" className={`password-input ${errors.pass ? "login-input-error" : ""}`}{...register("pass", { required: true })} />
+                    {errors.pass && (<span className="login-error-message">This field is required</span>)}
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
         </div>
     );
 
